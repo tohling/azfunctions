@@ -1,3 +1,5 @@
+// Code is a verbatim copy from http://martinabbott.azurewebsites.net/2016/06/11/fun-with-azure-functions-and-the-emotion-api/
+
 #r "Microsoft.WindowsAzure.Storage"
 #r "System.Web"
 #r "System.Runtime"
