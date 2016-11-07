@@ -21,7 +21,7 @@ else {
 Sample GET JSON body:
 
 {
-    "storageaccount": "hutohant10store",
-    "resourcegroup": "Default-Storage-WestUS"
+    "storageaccount": "store1",
+    "resourcegroup": "RG1"
 }
 #>

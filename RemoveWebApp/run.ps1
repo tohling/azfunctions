@@ -15,7 +15,7 @@ Remove-AzureRmWebApp -ResourceGroupName $requestBody.resourcegroupname -Name $re
 Sample POST JSON body:
 
 {
-    "sitename": "hutoh-site",
-    "resourcegroupname": "Default-Web-WestUS"
+    "sitename": "site1",
+    "resourcegroupname": "RG1"
 }
 #>

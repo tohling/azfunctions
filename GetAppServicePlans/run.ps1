@@ -15,7 +15,7 @@ Find-AzureRmResource -ResourceType $requestBody.resourcetype -ResourceGroupNameC
 Sample GET JSON body:
 
 {
-   "resourcegroup": "Default-Web-WestUS",
+   "resourcegroup": "RG1",
    "resourcename" : "Default1",
    "resourcetype": "Microsoft.Web/serverfarms"
 }

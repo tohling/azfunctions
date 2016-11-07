@@ -61,8 +61,8 @@ Sample POST JSON body:
 	     "key2" : "value2",
 	     "key3" : "value3"
    },
-   "sitename": "hutoh-site",
-   "resourcegroup": "Default-Web-WestUS",
+   "sitename": "site1",
+   "resourcegroup": "RG1",
    "location": "West US",
    "appserviceplan" : "Default1"
 }

@@ -15,8 +15,8 @@ New-AzureRmWebApp -ResourceGroupName $requestBody.resourcegroup -Name $requestBo
 Sample POST JSON body:
 
 {
-   "sitename": "hutoh-site",
-   "resourcegroup": "Default-Web-WestUS",
+   "sitename": "site1",
+   "resourcegroup": "RG1",
    "location": "West US",
    "appserviceplan" : "Default1"
 }
