@@ -16,20 +16,24 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     string address = data?.address;
     string name = data?.name;
 
-    GeoCoder geoCoder = new GeoCoder(apiKey);
-    GeoLocation loc = geoCoder.GetGeoLocation(address);
-    string formattedAddress = geoCoder.GetAddress(loc);
-
     HttpResponseMessage message = null;
-    if (name == null)
+    if (string.IsNullOrEmpty(name))
     {
-        message = req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name in the request body");
+        message = req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a 'name' in the request body");
+    }
+    else if (string.IsNullOrEmpty(address))
+    {
+        message = req.CreateResponse(HttpStatusCode.BadRequest, "Please pass an 'address' in the request body");
     }
     else
     {
+        GeoCoder geoCoder = new GeoCoder(apiKey);
+        GeoLocation loc = geoCoder.GetGeoLocation(address);
+        string formattedAddress = geoCoder.GetAddress(loc);
+
         var msg = $"Hello {name}. Lon: '{loc.Longitude}', Lat: '{loc.Latitude}', Formatted address: '{formattedAddress}'"; 
         message = req.CreateResponse(HttpStatusCode.OK, msg);
     }
-
+    
     return message;
 }
