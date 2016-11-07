@@ -1,22 +1,14 @@
 $requestBody = Get-Content $req -Raw | ConvertFrom-Json
-$name = $requestBody.name
 
-if ($req_query_name) 
-{
-    $name = $req_query_name 
-}
-
-Out-File -Encoding Ascii -FilePath $res -inputObject "Hello $name"
-
+# Set Service Principal credentials
+# SP_PASSWORD, SP_USERNAME, TENANTID are app settings
 $secpasswd = ConvertTo-SecureString $env:SP_PASSWORD -AsPlainText -Force;
 $mycreds = New-Object System.Management.Automation.PSCredential ($env:SP_USERNAME, $secpasswd)
 Add-AzureRmAccount -ServicePrincipal -Tenant $env:TENANTID -Credential $mycreds;
-
 $context = Get-AzureRmContext;
-$resourceGroupName = "Default-Storage-WestUS";
-$storageAccountName = "hutohant10store";
 Set-AzureRmContext -Context $context;
-$storage = Get-AzureRmStorageAccount -StorageAccountName $storageAccountName -ResourceGroupName $resourceGroupName;
+
+$storage = Get-AzureRmStorageAccount -StorageAccountName $requestBody.storageaccount -ResourceGroupName $requestBody.resourcegroup;
 if ($storage -ne $null){
     echo "Storage";
     $storage | Out-String;
@@ -25,3 +17,11 @@ else {
     echo "Empty";
 }
 
+<#
+Sample GET JSON body:
+
+{
+    "storageaccount": "hutohant10store",
+    "resourcegroup": "Default-Storage-WestUS"
+}
+#>
