@@ -1,0 +1,22 @@
+{
+  "bindings": [
+    {
+      "name": "myBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "pictures/{name}",
+      "createIfNotExists": true,
+      "connection": "AzureWebJobsDashboard"
+    },
+    {
+      "name": "outputDocument",
+      "type": "documentDB",
+      "databaseName": "ImageDb",
+      "collectionName": "ImageCollection",
+      "createIfNotExists": true,
+      "connection": "AzureWebJobsDocumentDBConnectionString",     
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
