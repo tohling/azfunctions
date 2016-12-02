@@ -8,7 +8,7 @@ Add-AzureRmAccount -ServicePrincipal -Tenant $env:TENANTID -Credential $mycreds;
 $context = Get-AzureRmContext;
 Set-AzureRmContext -Context $context;
 
-# Start VM
+# Stop VM
 Stop-AzureRmVM -ResourceGroupName $requestBody.resourcegroup -Name $requestBody.vmname -Force | Out-String
 
 <#
