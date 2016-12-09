@@ -1,0 +1,12 @@
+{
+  "bindings": [
+    {
+      "type": "eventHubTrigger",
+      "name": "myEventHubMessage",
+      "direction": "in",
+      "path": "hutoheventhub3",
+      "connection": "AzureWebJobsEventHubReceiver"
+    }
+  ],
+  "disabled": false
+}
