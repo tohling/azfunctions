@@ -15,7 +15,7 @@ Get-AzureRmVM -ResourceGroupName $requestBody.resourcegroup -Name $requestBody.v
 Sample POST JSON body:
 
 {
-   "vmname": "vmtest98052",
-   "resourcegroup": "vmtestResourceGroup"
+   "vmname": "testvm",
+   "resourcegroup": "testresourcegroup"
 }
 #>
