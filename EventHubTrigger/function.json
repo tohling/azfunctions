@@ -2,8 +2,9 @@
   "bindings": [
     {
       "type": "eventHubTrigger",
-      "name": "myEventHubMessage",
+      "name": "myEventHubTrigger",
       "direction": "in",
+      "cardinality": "many",
       "path": "hutoheventhub3",
       "connection": "AzureWebJobsEventHubReceiver"
     }
