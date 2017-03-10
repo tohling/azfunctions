@@ -16,7 +16,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     string authId = Environment.GetEnvironmentVariable("PLIVO_AUTH_ID"); // or hard-code AUTHID
     string authToken = Environment.GetEnvironmentVariable("PLIVO_AUTH_TOKEN"); // or hard-code AUTHTOKEN
 
-    // Get request body
+    // Get request body. TODO: Add error handling for invalid request body payload
     string src = data?.src;
     string dst = data?.dst;
     string text = data?.text;
@@ -32,11 +32,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
         { "url", url}, // The URL to which with the status of the message is sent
         { "method", "POST"} // Method to invoke the url
     });
-
-    if(src == null || dst == null || text == null || url == null)
-    {
-        return req.CreateResponse(HttpStatusCode.BadRequest, "Please pass src, dst, text, and url in the request body");
-    }
 
     return req.CreateResponse(HttpStatusCode.OK, resp.Content);
 }
