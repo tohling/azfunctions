@@ -40,3 +40,18 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
     return req.CreateResponse(HttpStatusCode.OK, resp.Content);
 }
+
+/*
+To test, use the following,
+
+HTTP Method: POST
+
+Sample request body:
+
+{
+    "src": "+14257868063",
+    "dst": "+14254210633",
+    "text": "Hi, this is a text from Azure Functions",
+    "url": "https://hutohfunctiontest.azurewebsites.net/api/PlivoSendSms"
+}
+*/
