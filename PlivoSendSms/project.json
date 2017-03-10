@@ -1,0 +1,10 @@
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "RestSharp": "105.2.3",
+        "Plivo": "3.0.5"
+      }
+    }
+   }
+}
