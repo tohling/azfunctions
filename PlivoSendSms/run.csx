@@ -16,7 +16,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     string authId = Environment.GetEnvironmentVariable("PLIVO_AUTH_ID"); // or hard-code AUTHID
     string authToken = Environment.GetEnvironmentVariable("PLIVO_AUTH_TOKEN"); // or hard-code AUTHTOKEN
 
-    // Set name to query string or body data
+    // Get request body
     string src = data?.src;
     string dst = data?.dst;
     string text = data?.text;
@@ -27,7 +27,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     var resp = plivo.send_message(new Dictionary<string, string>() 
     {
         { "src", src }, // Sender's phone number with country code
-        { "dst", dst }, // Receiver's phone number wiht country code
+        { "dst", dst }, // Receiver's phone number with country code
         { "text", text }, // Your SMS text message
         { "url", url}, // The URL to which with the status of the message is sent
         { "method", "POST"} // Method to invoke the url
@@ -35,7 +35,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
     if(src == null || dst == null || text == null || url == null)
     {
-        return req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a src, dst, text, and url in the request body");
+        return req.CreateResponse(HttpStatusCode.BadRequest, "Please pass src, dst, text, and url in the request body");
     }
 
     return req.CreateResponse(HttpStatusCode.OK, resp.Content);
@@ -49,9 +49,9 @@ HTTP Method: POST
 Sample request body:
 
 {
-    "src": "+14257868063",
-    "dst": "+14254210633",
+    "src": "+1222222222",
+    "dst": "+1333333333",
     "text": "Hi, this is a text from Azure Functions",
-    "url": "https://hutohfunctiontest.azurewebsites.net/api/PlivoSendSms"
+    "url": "https://myfunction.azurewebsites.net/api/PlivoSendSms"
 }
 */
