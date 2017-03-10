@@ -1,3 +1,8 @@
+/*
+Solution is based on examples from the following source:
+https://github.com/plivo/plivo-examples-dotnet/blob/master/sms/send_sms.cs
+*/
+
 using System;
 using System.Net;
 using System.Collections.Generic;
